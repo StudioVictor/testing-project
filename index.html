@@ -3,12 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZNH - Elevate Your Every Day</title>
-
-<!-- Google Fonts buat naikin kelas estetika fashion cewek -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Dental Vibe</title>
 
 <style>
 /* RESET & FONTS GLOBAL */
@@ -90,8 +85,8 @@ header{
 
 /* BUTTONS BERSIH & PREMIUM */
 .btn-primary{
-  background: #f29d8d;
-  color: white !important;
+  background: #0b3056;
+  color: #F8F9Fa !important;
   border: none;
   padding: 12px 24px;
   border-radius: 25px;
@@ -103,24 +98,37 @@ header{
   transition: background 0.3s ease;
 }
 .btn-primary:hover {
-  background: #e08b7b;
-}
+  background: #ffffff;
+} 
 
-.btn-shopee {
-  background: #EE4D2D;
-  color: white;
+.btn-secondary{
+  background: #F8F9Fa;
+  color: #0b3056;
   border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 25px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 14px;
-  width: 100%;
+  transition: background 0.3s ease;
 }
 
+.btn-function{
+  background: #0b3056;
+  color: #F8F9Fa !important;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+  
 .btn-wa {
   background: #25D366;
   color: white;
@@ -139,7 +147,7 @@ header{
 /* HERO SECTION (Pake Linear Gradient biar text putih kebaca jelas!) */
 .hero{
   height: 460px;
-  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('dashboard.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('Dashboard.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,10 +230,60 @@ header{
   gap: 8px;
 }
 
+/* JADWAL PRAKTIK DOKTER (toggle konten, gak pindah page) */
+.hidden{
+  display: none !important;
+}
+
+.schedule-table{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.schedule-row{
+  background: white;
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.schedule-row div:nth-child(1){
+  font-weight: 700;
+  color: #2c2c2c;
+  font-size: 16px;
+}
+
+.schedule-row div:nth-child(2){
+  color: #f29d8d;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.schedule-row div:nth-child(3){
+  color: #666666;
+  font-size: 14px;
+}
+
+.schedule-head{
+  display: none;
+}
+
+.schedule-cta{
+  max-width: 280px;
+  margin: 28px auto 0;
+}
+
 /* FOOTER SECTION & KONTEN BAWAH (Ganti item pekat jadi Earth Tone Gelap Mulus) */
 .footer-section {
-  background: #2b2521; /* Soft charcoal brown (Earth tone mewah) */
-  color: #f7ede2;
+  background: #0b3056;
+  color: #F8F9Fa;
   padding: 60px 0 20px 0;
 }
 
@@ -295,6 +353,23 @@ header{
   .action-buttons {
     flex-direction: row;
   }
+
+  .schedule-row{
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
+    padding: 16px 24px;
+  }
+
+  .schedule-head{
+    display: grid;
+    background: #0b3056;
+    box-shadow: none;
+  }
+
+  .schedule-head div{
+    color: #F8F9Fa;
+    font-weight: 700;
+  }
 }
 </style>
 </head>
@@ -304,16 +379,18 @@ header{
 <header>
   <div class="container nav">
     <div class="logo">
-      <img src="brandlogo.png" alt="ZNH Logo">
+      <img src="Brand logo.png" alt="Dental Vibe logo">
     </div>
 
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
     <nav id="menu">
-      <a href="#menu-section">Product</a>
+      <a href="#menu-section" onclick="showLayanan(event)">Layanan</a>
+      <a href="#jadwal-section" onclick="showJadwal(event)">Jadwal Praktik Dokter</a>
+      <a href="cabang-section" onclick="showCabang(event)">Daftar Cabang</a>
       <a href="#location">Location</a>
       <a href="#contact">Contact</a>
-      <a href="https://wa.me/6289505225604" target="_blank" rel="noopener noreferrer" class="btn-primary">Shop Now</a>
+      <a href="https://wa.me/6281973958232" target="_blank" rel="noopener noreferrer" class="btn-function">Shop Now</a>
     </nav>
   </div>
 </header>
@@ -321,10 +398,10 @@ header{
 <!-- HERO -->
 <section class="hero">
   <div>
-    <h1>ELEVATE YOUR <br>EVERY DAY</h1>
-    <p>Discover curated styles, and essential beauty designed for a modern life</p>
+    <h1>SOLUSI MASALAH GIGI<br>DENGAN PELAYANAN TERBAIK</br></h1>
+    <p>Rawat gigi anda tanpa cemas dengan pelayanan ramah, fasilitas premium, dan diagnosis akurat</p>
     <div class="hero-buttons">
-      <a href="https://wa.me/6289505225604" target="_blank" rel="noopener noreferrer" class="btn-primary">Shop the Collection</a>
+      <a href="https://wa.me/6281973958232" target="_blank" rel="noopener noreferrer" class="btn-function">Konsultasi Gratis Sekarang</a>
     </div>
   </div>
 </section>
@@ -332,74 +409,187 @@ header{
 <!-- PRODUCTS HIGHLIGHT -->
 <section class="products" id="menu-section">
   <div class="container">
-    <h2>Product Highlight</h2>
+    <h2>Layanan Kami</h2>
 
     <div class="cards"> 
       <!-- Card 1 -->
       <div class="card">
-        <img src="image1.jpg" alt="Sand Linen Dress">
-        <h3>Sand Linen Dress</h3>
-        <div class="price-tag">Rp.200.000,-</div>
+        <img src="Card 1.jpg" alt="Scalng Gigi">
+        <h3>Scaling Gigi</h3>
+        <div class="price-tag">Rp.150.000-Rp.300.000</div>
         <div class="action-buttons">
-          <a href="https://s.shopee.co.id/1Lbfm73hHd" target="_blank" rel="noopener noreferrer" class="btn-shopee">Shopee</a>
-          <a href="https://wa.me/6289505225604" target="_blank" rel="noopener noreferrer" class="btn-wa">WhatsApp</a>
+          <a href="https://wa.me/6281973958232" target="_blank" rel="noopener noreferrer" class="btn-wa">Konsultasi Via WhatsApp</a>
         </div>
       </div>
 
       <!-- Card 2 -->
       <div class="card">
-        <img src="image2.jpg" alt="Terracotta Linen Co-ord">
-        <h3>Terracotta Linen Co-ord</h3>
-        <div class="price-tag">Rp.250.000,-</div>
+        <img src="Card 2.jpg" alt="Tambal Gigi">
+        <h3>Tambal Gigi</h3>
+        <div class="price-tag">Rp.350.000-Rp.600.000</div>
         <div class="action-buttons">
-          <a href="https://s.shopee.co.id/AAD4IPldjc" target="_blank" rel="noopener noreferrer" class="btn-shopee">Shopee</a>
-          <a href="https://wa.me/6289505225604" target="_blank" rel="noopener noreferrer" class="btn-wa">WhatsApp</a>
+          <a href="https://wa.me/6281973958232" target="_blank" rel="noopener noreferrer" class="btn-wa">Konsultasi Via WhatsApp</a>
         </div>
       </div>
 
       <!-- Card 3 -->
       <div class="card">
-        <img src="image3.jpg" alt="Olive Linen Maxi Dress">
-        <h3>Olive Linen Maxi Dress</h3>
-        <div class="price-tag">Rp.220.000,-</div>
+        <img src="Card 3.jpg" alt="Bleaching Gigi">
+        <h3>Bleaching Gigi</h3>
+        <div class="price-tag">Rp.2.000.000-Rp.4.000.000</div>
         <div class="action-buttons">
-          <a href="https://s.shopee.co.id/9fGnhYGzZQ" target="_blank" rel="noopener noreferrer" class="btn-shopee">Shopee</a>
-          <a href="https://wa.me/6289505225604" target="_blank" rel="noopener noreferrer" class="btn-wa">WhatsApp</a>
+          <a href="https://wa.me/6281973958232" target="_blank" rel="noopener noreferrer" class="btn-wa">Konsultasi Via Whatsapp</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Card 4.jpg" alt="Pemasangan Behel">
+        <h3>Pemasangan Behel</h3>
+        <div class="price-tag">Rp.2.000.000-Rp.3.000.000</div>
+        <div class="action-buttons">
+          <a href="https://wa.me/6281973958232" target="_blank" rel="noopener noreferrer" class="btn-wa">Konsultasi Via WhatsApp</a>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- FOOTER WRAPPER (Menyatukan section bawah biar warnanya konsisten) -->
-<footer class="footer-section">
-  
-  <!-- LOCATION -->
-  <section class="location" id="location">
+<!-- JADWAL PRAKTIK DOKTER (default hidden, muncul gantiin Layanan pas diklik dari menu) -->
+<section class="products hidden" id="jadwal-section">
+  <div class="container">
+    <h2>Jadwal Praktik Dokter</h2>
+
+<div class="cabang-filter">
+      <button class="btn-primary" data-filter="semua" onclick="filterJadwal('semua', this)">Semua Cabang</button>
+      <button class="btn-primary" data-filter="gading-serpong" onclick="filterJadwal('gading-serpong', this)">Gading Serpong</button>
+      <button class="btn-primary" data-filter="kemang" onclick="filterJadwal('kemang', this)">Kemang</button>
+      <button class="btn-primary" data-filter="pik" onclick="filterJadwal('pik', this)">PIK</button>
+</div>
+
+    
+
+    <div class="schedule-table">
+      <div class="schedule-row schedule-head">
+        <div>Dokter</div>
+        <div>Hari Praktik</div>
+        <div>Jam Praktik</div>
+      </div>
+
+      <div class="schedule-row" data-cabang="gading-serpong">
+        <div>drg. Aditya Pratama</div>
+        <div>Senin - Jumat</div>
+        <div>09.00 - 15.00</div>
+      </div>
+
+      <div class="schedule-row" data-cabang="gading-serpong">
+        <div>drg. Budiono Setiawan</div>
+        <div>Rabu &amp; Kamis</div>
+        <div>11.00 - 17.30 </div>
+      </div>
+
+     <div class="schedule-row" data-cabang="gading-serpong">
+       <div>drg. Yani Andini</div>
+       <div>Sabtu - Minggu</div>
+       <div>14.00 - 18.00</div>
+     </div>
+
+      <div class="schedule-row" data-cabang="kemang">
+        <div>drg. Rudi Santoso</div>
+        <div>Senin - Jumat</div>
+        <div>09.00-16.00</div>
+      </div>
+
+      <div class="schedule-row" data-cabang="kemang">
+        <div>drg. Bella Anastasya, Sp.Ortho</div>
+        <div>Selasa &amp; Kamis</div>
+        <div>13.00 - 20.00</div>
+      </div>
+
+      <div class="schedule-row" data-cabang="kemang">
+        <div>drg. Kevin Wijaya</div>
+        <div>Sabtu - Minggu</div>
+        <div>11.00-15.30</div> 
+      </div>
+
+      <div class="schedule-row" data-cabang="pik">
+        <div>drg. Kenzo Saputra</div>
+        <div>Senin - Jumat</div>
+        <div>09.30 - 17.00</div>
+      </div>
+
+      <div class="schedule-row" data-cabang="pik">
+        <div>drg. Sisca Salim</div>
+        <div>Rabu &amp; Sabtu</div>
+        <div>14.00 - 20.00</div>
+      </div>
+
+      <div class="schedule-row" data-cabang="pik">
+        <div>drg. Citra Wulandari</div>
+        <div>Sabtu - Minggu</div>
+        <div>10.00 - 18.00</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="action-buttons schedule-cta">
+      <a href="https://wa.me/6281973958232" target="_blank" rel="noopener noreferrer" class="btn-wa">Booking Jadwal Via WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="products hidden" id="cabang-section">
     <div class="container">
-      <h2>Location</h2>
-      <p>Grand Indonesia East Mall, Jl. M.H. Thamrin No.1 Lt.5, Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta</p>
-      <br>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.520222105266!2d106.81829423847616!3d-6.19487956071454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f421acdc7113%3A0x397a514e93ba52bd!2sGrand%20Indonesia%20East%20Mall%2C%20Lobby%20Rama%20No.1%2C%20Menteng%2C%20Kec.%20Menteng%2C%20Kota%20Jakarta%20Pusat%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2010230!5e0!3m2!1sid!2sid!4v1775656462828!5m2!1sid!2sid" 
-        width="100%" height="280" style="border:0; border-radius:12px;">
-      </iframe>
+    <h2>Daftar Cabang Klinik</h2>
+
+    <div class="schedule-row">
+      <div>Dental Vibe Gading Serpong</div>
+      <h3>Jl. Boulevard Raya Gading Serpong</h3>
+      <a href="https://wa.me/6281973958232" target="_blank" rel="noopener noreferrer" class="btn-wa">WhatsApp</a>
+      <a href="https://maps.app.goo.gl/VLG5Uy3EY2LxV3ik6" target="_blank" rel="noopener noreferrer" class="btn-functiom">Lokasi</a>
+      <a href="#jadwal-section" class="btn-secondary" onclick="showJadwalForCabang(event,'gading-serpong')">Lihat Jadwal Dokter</a>
+    </div>
+
+    <div class="schedule-row">
+      <div>Dental Vibe Kemang</div>
+      <h3>Jl.Kemang Raya</h3>
+      <a href="https://wa.me/6281973958232" target="_blank" rel="noopener noreferrer" class="btn-wa">WhatsApp</a>
+      <a href="https://maps.app.goo.gl/XJNM7Rb2GnubQMS46" target="_blank" rel="noopener noreferrer" class="btn-function">Lokasi</a>
+      <a href="#jadwal-section" class="btn-secondary" onclick="showJadwalForCabang(event,'kemang')">Lihat Jadwal Dokter</a>
+   
+    </div>
+
+    <div class="schedule-row">
+      <div>Dental Vibe PIK</div>
+      <h3>Jl.Garden House</h3>
+      <a href="https://wa.me/6281973958232" target="_blank" rel="noopener noreferrer" class="btn-wa">WhatsApp</a>
+      <a href="https://maps.app.goo.gl/6T2sZ2jJY7hu656G7" target="_blank" rel="noopener noreferrer" class="btn-function">Lokasi</a>
+      <a href="#jadwal-section" class="btn-secondary" onclick="showJadwalForCabang(event,'pik')">Lihat Jadwal Dokter</a>
     </div>
   </section>
+   
 
+
+
+
+<!-- FOOTER WRAPPER (Menyatukan section bawah biar warnanya konsisten) -->
+<footer class="footer-section">
   <!-- CONTACT -->
   <section id="contact">
     <div class="container">
-      <h2>Contact Us</h2>
-      <p>Punya pertanyaan seputar ukuran atau stok produk? Sapa admin kami langsung lewat WhatsApp.</p>
+      <h2>Hubungi Kami</h2>
+      <p>Konsultasikan Masalah Gigi dan Gusi Anda</p>
       <br>
-      <a href="https://wa.me/6289505225604" target="_blank" rel="noopener noreferrer" class="btn-primary">
+      <a href="https://wa.me/6281973958232" target="_blank" rel="noopener noreferrer" class="btn-secondary">
         Chat via WhatsApp
       </a>
     </div>
   </section>
 
-  <p class="copyright">Copyright © 2026 ZNH. All rights reserved.</p>
+  <a href= https://www.instagram.com/contact.victorstudio>
+    <img src="Instagram logo.png" alf="Instagram logo" width="40 height="40">
+  </a>
+
+  <p class="copyright">Copyright © 2026 Dental Vibe. All rights reserved.</p>
 </footer>
 
 <script>
@@ -407,13 +597,63 @@ function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
 }
 
-// Tambahan auto-close menu pas link di klik di mobile biar ga nutupin konten
+// Satu fungsi helper untuk handle semua toggle
+function switchSection(sectionToShow) {
+  // Hide semua content sections
+  document.getElementById("menu-section").classList.add("hidden");
+  document.getElementById("jadwal-section").classList.add("hidden");
+  document.getElementById("cabang-section").classList.add("hidden");
+  
+  // Show section yang diminta
+  document.getElementById(sectionToShow).classList.remove("hidden");
+  
+  // Scroll ke section itu
+  document.getElementById(sectionToShow).scrollIntoView({behavior:"smooth"});
+}
+
+// Event listener untuk menu links
+function showLayanan(e){
+  e.preventDefault();
+  switchSection("menu-section");
+}
+
+function showJadwal(e){
+  e.preventDefault();
+  switchSection("jadwal-section");
+}
+
+function showCabang(e){
+  e.preventDefault();
+  switchSection("cabang-section");
+}
+
+function filterJadwal(cabang, btn){
+  
+  document.querySelectorAll('.btn-secondary').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+
+document.querySelectorAll('#jadwal-section .schedule-row:not(.schedule-head)').forEach(row => {
+    if(cabang === 'semua' || row.dataset.cabang === cabang){
+      row.classList.remove('hidden');
+    } else {
+      row.classList.add('hidden');
+    }
+  });
+}
+
+function showJadwalForCabang(e, cabang){
+  e.preventDefault();
+  switchSection('jadwal-section');
+  const targetBtn = document.querySelector('.btn-secondary[data-filter="' + cabang + '"]');
+  filterJadwal(cabang, targetBtn);
+}
+
+// Auto-close menu di mobile setelah klik
 document.querySelectorAll('#menu a').forEach(link => {
   link.addEventListener('click', () => {
     document.getElementById("menu").classList.remove("active");
   });
 });
 </script>
-
 </body>
 </html>
