@@ -627,25 +627,31 @@ function showCabang(e){
   switchSection("cabang-section");
 }
 
-function filterJadwal(cabang, btn){
-  
-  document.querySelectorAll('.btn-secondary').forEach(b => b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
+function filterJadwal(){
 
-document.querySelectorAll('#jadwal-section .schedule-row:not(.schedule-head)').forEach(row => {
-    if(cabang === 'semua' || row.dataset.cabang === cabang){
-      row.classList.remove('hidden');
-    } else {
-      row.classList.add('hidden');
-    }
-  });
+const cabang=document.getElementById("filter-cabang").value;
+const spesialis=document.getElementById("filter-spesialis").value;
+const hari=document.getElementById("filter-hari").value;
+
+document.querySelectorAll("#jadwal-section .schedule-row:not(.schedule-head)").forEach(row=>{
+
+const cocokCabang=
+cabang==="semua" || row.dataset.cabang===cabang;
+
+const cocokSpesialis=
+spesialis==="semua" || row.dataset.spesialis===spesialis;
+
+const cocokHari=
+hari==="semua" || row.dataset.hari.includes(hari);
+
+if(cocokCabang && cocokSpesialis && cocokHari){
+row.classList.remove("hidden");
+}else{
+row.classList.add("hidden");
 }
 
-function showJadwalForCabang(e, cabang){
-  e.preventDefault();
-  switchSection('jadwal-section');
-  const targetBtn = document.querySelector('.btn-secondary[data-filter="' + cabang + '"]');
-  filterJadwal(cabang, targetBtn);
+});
+
 }
 
 // Auto-close menu di mobile setelah klik
